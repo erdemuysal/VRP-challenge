@@ -1,0 +1,17 @@
+version: "2.4"
+services:
+  router:
+    network_mode: host
+    image: erdemuysal/vrprouter:1.0.0
+    container_name: vrprouter
+    volumes:
+      - ./router-conf/:/conf
+    depends_on:
+      - vroom
+  vroom:
+    image: vroomvrp/vroom-docker:v1.8.0
+    container_name: vroom
+    volumes:
+      - ./vroom-conf/:/conf
+    ports:
+      - 3000:3000

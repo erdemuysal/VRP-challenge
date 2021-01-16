@@ -1,0 +1,5 @@
+.idea/
+router-conf/
+vroom-conf/
+venv
+__pycache__
