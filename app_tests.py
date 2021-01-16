@@ -33,7 +33,7 @@ class TestCorrectlyConfiguredApp(unittest.TestCase):
 
     def test_unexpected_methods(self):
         response = self.app.get(BASE_URL)
-        self.assertEqual(response.status_code, 405)
+        self.assertEqual(response.status_code, HTTPStatus.METHOD_NOT_ALLOWED)
 
     def test_unexpected_mimetype(self):
         response = self.app.post(BASE_URL, data=SAMPLE_INPUT, content_type=INCORRECT_MIMETYPE)
@@ -41,21 +41,21 @@ class TestCorrectlyConfiguredApp(unittest.TestCase):
 
     def test_try_another_routes(self):
         response = self.app.post(OTHER_ROUTE)
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
 
     def test_given_sample_request(self):
         response = self.app.post(BASE_URL, data=SAMPLE_INPUT, content_type=JSON_MIMETYPE)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(json.loads(response.get_data()), json.loads(SAMPLE_OUTPUT))
 
     def test_if_there_will_be_empty_routes(self):
         response = self.app.post(BASE_URL, data=EMPTY_ROUTES_INPUT, content_type=JSON_MIMETYPE)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(json.loads(response.get_data()), json.loads(EMPTY_ROUTES_OUTPUT))
 
     def test_if_there_will_be_unassigned_delivery(self):
         response = self.app.post(BASE_URL, data=UNASSIGNED_DELIVERY_INPUT, content_type=JSON_MIMETYPE)
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, HTTPStatus.OK)
         self.assertEqual(json.loads(response.get_data()), json.loads(UNASSIGNED_DELIVERY_OUTPUT))
 
     def test_no_input(self):
