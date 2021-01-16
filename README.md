@@ -21,7 +21,7 @@ By editing config.yml, vroom configuration and application port can be set.
 ### Single Docker Container
 
 ```sh
-docker run -d -p 5000:5000 -v $(pwd)/router-conf/:/conf erdemuysal/vrprouter:latest
+docker run -d -p 5000:5000 -v $(pwd)/router-conf/:/conf erdemuysal/vrprouter:1.0.0
 ```
 
 By editing router-conf/config.yml, vroom configuration and application port can be set.
