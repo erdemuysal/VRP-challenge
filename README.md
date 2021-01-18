@@ -1,6 +1,6 @@
 # VRP Challenge
 
-This application aims to simplify the VRP (Vehicle Orientation Problem) output solved by vroom and to enable it to be used as a microservice. It uses a simple flask http router for python(3.5+) to achieve this. The router can be used in any of the following ways:
+This application aims to simplify the VRP (Vehicle Routing Problem) output solved by vroom and to enable it to be used as a microservice. It uses a simple flask http router for python(3.5+) to achieve this. The router can be used in any of the following ways:
 * Standalone Python App
 * Single Docker Container
 * Docker-Compose with vroom Dependency
